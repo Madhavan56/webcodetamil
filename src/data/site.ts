@@ -26,9 +26,9 @@ export const siteConfig: SiteConfig = {
   tagline: 'Websites that make businesses stand out.',
   description: 'We design and build modern websites, digital experiences and creative solutions for businesses and creators.',
   contact: {
-    email: 'hello@webcodetamil.com',
-    phone: '+91 XXXXX XXXXX',
-    whatsapp: 'https://wa.me/91XXXXXXXXXX',
+    email: 'webcodetamil@gmail.com',
+    phone: '+91 9025614371',
+    whatsapp: 'https://wa.me/919025614371',
   },
   social: {
     twitter: 'https://twitter.com/webcodetamil',

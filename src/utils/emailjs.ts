@@ -29,7 +29,7 @@ export const sendContactEmail = async (formData: ContactFormData): Promise<{ suc
       phone: formData.phone || 'Not provided',
       project_type: formData.projectType,
       message: formData.message,
-      to_email: 'hello@webcodetamil.com', // Replace with your email
+      to_email: 'webcodetamil@gmail.com',
     };
 
     await emailjs.send(config.serviceId, config.templateId, templateParams, config.publicKey);

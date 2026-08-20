@@ -151,7 +151,7 @@ export const Contact = () => {
                   <Input
                     label="Phone (Optional)"
                     type="tel"
-                    placeholder="+91 XXXXX XXXXX"
+                    placeholder="+91 9025614371"
                     error={errors.phone?.message}
                     {...register('phone')}
                   />
