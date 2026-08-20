@@ -1,39 +1,21 @@
-import { lazy, Suspense } from 'react';
 import { Hero } from '@/components/sections/Hero';
+import { Services } from '@/components/sections/Services';
+import { Work } from '@/components/sections/Work';
+import { About } from '@/components/sections/About';
+import { Process } from '@/components/sections/Process';
+import { Contact } from '@/components/sections/Contact';
+import { BlogGrid } from '@/components/blog/BlogGrid';
 import { ScrollReveal } from '@/components/ui/ScrollReveal';
-
-const Services = lazy(() => import('@/components/sections/Services').then(m => ({ default: m.Services })));
-const Work = lazy(() => import('@/components/sections/Work').then(m => ({ default: m.Work })));
-const About = lazy(() => import('@/components/sections/About').then(m => ({ default: m.About })));
-const Process = lazy(() => import('@/components/sections/Process').then(m => ({ default: m.Process })));
-const Contact = lazy(() => import('@/components/sections/Contact').then(m => ({ default: m.Contact })));
-const BlogGrid = lazy(() => import('@/components/blog/BlogGrid').then(m => ({ default: m.BlogGrid })));
-
-const SectionFallback = () => (
-  <div className="py-20 flex items-center justify-center">
-    <div className="h-8 w-8 border-3 border-primary/30 border-t-primary rounded-full animate-spin" />
-  </div>
-);
 
 export const Index = () => {
   return (
     <>
       <Hero />
-      <Suspense fallback={<SectionFallback />}>
-        <Services />
-      </Suspense>
-      <Suspense fallback={<SectionFallback />}>
-        <Work />
-      </Suspense>
-      <Suspense fallback={<SectionFallback />}>
-        <About />
-      </Suspense>
-      <Suspense fallback={<SectionFallback />}>
-        <Process />
-      </Suspense>
-      <Suspense fallback={<SectionFallback />}>
-        <Contact />
-      </Suspense>
+      <Services />
+      <Work />
+      <About />
+      <Process />
+      <Contact />
 
       <section id="blog" className="section bg-surface/30" aria-labelledby="blog-heading">
         <div className="container">
@@ -51,9 +33,7 @@ export const Index = () => {
             </div>
           </ScrollReveal>
 
-          <Suspense fallback={<SectionFallback />}>
-            <BlogGrid featured limit={3} />
-          </Suspense>
+          <BlogGrid featured limit={3} />
 
           <ScrollReveal delay={200} direction="up">
             <div className="text-center mt-12">
