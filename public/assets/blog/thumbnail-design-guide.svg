@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="100%" height="100%">
+  <defs>
+    <linearGradient id="blog2-bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0a0a14" />
+      <stop offset="100%" stop-color="#1b122c" />
+    </linearGradient>
+    <linearGradient id="t-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ec4899" />
+      <stop offset="50%" stop-color="#8b5cf6" />
+      <stop offset="100%" stop-color="#00d4ff" />
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="630" fill="url(#blog2-bg)" />
+  <circle cx="950" cy="300" r="240" fill="#ec4899" opacity="0.1" filter="blur(60px)" />
+  <circle cx="1000" cy="350" r="180" fill="#7c3aed" opacity="0.15" filter="blur(50px)" />
+
+  <g transform="translate(100, 120)">
+    <rect width="140" height="32" rx="16" fill="#ec4899" opacity="0.15" stroke="#ec4899" stroke-width="1" />
+    <text x="70" y="21" fill="#ec4899" font-family="Inter, sans-serif" font-size="12" font-weight="700" text-anchor="middle">DESIGN GUIDE</text>
+
+    <text x="0" y="90" fill="#ffffff" font-family="Inter, sans-serif" font-size="48" font-weight="800">
+      Designing High-CTR
+    </text>
+    <text x="0" y="150" fill="url(#t-grad)" font-family="Inter, sans-serif" font-size="48" font-weight="800">
+      YouTube Thumbnails
+    </text>
+
+    <text x="0" y="210" fill="#8888aa" font-family="Inter, sans-serif" font-size="18">
+      The visual hierarchy, typography rules, and psychological triggers that drive clicks in saturated niches.
+    </text>
+
+    <g transform="translate(0, 270)" font-family="Inter, sans-serif" font-size="14" fill="#666688">
+      <text x="0" y="0">Visual Strategy · CTR Optimization · Photoshop · Figma</text>
+      <text x="0" y="30" fill="#ec4899">Read Time: 5 min</text>
+    </g>
+  </g>
+
+  <!-- Right Graphic -->
+  <g transform="translate(700, 140)">
+    <rect width="400" height="320" rx="16" fill="#130e22" stroke="#ec4899" stroke-width="2" />
+    <text x="200" y="140" fill="#ffffff" font-family="Inter, sans-serif" font-size="28" font-weight="900" text-anchor="middle">HIGH-CTR</text>
+    <text x="200" y="180" fill="#ec4899" font-family="Inter, sans-serif" font-size="34" font-weight="900" text-anchor="middle">FORMULA</text>
+    <text x="200" y="240" fill="#8888aa" font-family="Inter, sans-serif" font-size="14" text-anchor="middle">Contrast · Focal Point · Emotion</text>
+  </g>
+</svg>

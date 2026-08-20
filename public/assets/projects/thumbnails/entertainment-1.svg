@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" width="100%" height="100%">
+  <defs>
+    <linearGradient id="ent1-bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#14061a" />
+      <stop offset="50%" stop-color="#2a083b" />
+      <stop offset="100%" stop-color="#09020d" />
+    </linearGradient>
+    <linearGradient id="pop-pink" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#ec4899" />
+      <stop offset="50%" stop-color="#f43f5e" />
+      <stop offset="100%" stop-color="#fbbf24" />
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1280" height="720" fill="url(#ent1-bg)" />
+
+  <!-- Stage Lights & Lens Flare -->
+  <circle cx="960" cy="300" r="260" fill="#ec4899" opacity="0.2" filter="blur(50px)" />
+  <circle cx="960" cy="300" r="120" fill="#fbbf24" opacity="0.15" filter="blur(30px)" />
+
+  <!-- Cinema Reel / Clapperboard Silhouette -->
+  <g transform="translate(800, 180)">
+    <rect width="360" height="260" rx="20" fill="#0f0217" stroke="#ec4899" stroke-width="4" />
+    <!-- Clapperboard stripes -->
+    <rect x="0" y="0" width="360" height="60" rx="10" fill="#200530" />
+    <polygon points="40,0 70,0 30,60 0,60" fill="#ffffff" />
+    <polygon points="120,0 150,0 110,60 80,60" fill="#ffffff" />
+    <polygon points="200,0 230,0 190,60 160,60" fill="#ffffff" />
+    <polygon points="280,0 310,0 270,60 240,60" fill="#ffffff" />
+    
+    <text x="180" y="150" fill="#ffffff" font-family="Inter, sans-serif" font-size="28" font-weight="900" text-anchor="middle">BLOCKBUSTER</text>
+    <text x="180" y="195" fill="#fbbf24" font-family="Inter, sans-serif" font-size="22" font-weight="800" text-anchor="middle">HONEST REVIEW</text>
+    <text x="180" y="235" fill="#ec4899" font-family="Inter, sans-serif" font-size="20" font-weight="900" text-anchor="middle">⭐⭐⭐⭐⭐</text>
+  </g>
+
+  <!-- Big Headline Typography Left -->
+  <g transform="translate(80, 180)">
+    <rect x="-10" y="-70" width="220" height="42" rx="10" fill="#ec4899" />
+    <text x="100" y="-43" fill="#ffffff" font-family="Inter, sans-serif" font-size="16" font-weight="900" text-anchor="middle">CINEMA TALKS தமிழ்</text>
+
+    <text x="0" y="40" fill="#ffffff" font-family="Inter, sans-serif" font-size="78" font-weight="900" stroke="#000000" stroke-width="12" paint-order="stroke fill" letter-spacing="-1">
+      BIGGEST HIT OF
+    </text>
+    
+    <text x="0" y="145" fill="url(#pop-pink)" font-family="Inter, sans-serif" font-size="94" font-weight="900" stroke="#000000" stroke-width="14" paint-order="stroke fill">
+      THE ENTIRE YEAR?
+    </text>
+
+    <text x="0" y="225" fill="#fbcfe8" font-family="Inter, sans-serif" font-size="38" font-weight="800" stroke="#000000" stroke-width="6" paint-order="stroke fill">
+      HIDDEN DETAILS &amp; EASTER EGGS 🎬
+    </text>
+  </g>
+
+  <!-- Viewer Verdict Box -->
+  <g transform="translate(80, 560)">
+    <rect width="400" height="75" rx="16" fill="#000000" stroke="#ec4899" stroke-width="2" />
+    <text x="30" y="46" fill="#fbbf24" font-family="Inter, sans-serif" font-size="26" font-weight="900">🔥 100% UNBIASED BREAKDOWN</text>
+  </g>
+</svg>

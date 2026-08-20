@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="100%" height="100%">
+  <defs>
+    <linearGradient id="og-bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0a0a0f" />
+      <stop offset="100%" stop-color="#12121f" />
+    </linearGradient>
+    <linearGradient id="og-text-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00d4ff" />
+      <stop offset="100%" stop-color="#7c3aed" />
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="630" fill="url(#og-bg)" />
+  <circle cx="200" cy="200" r="300" fill="#00d4ff" opacity="0.08" filter="blur(80px)" />
+  <circle cx="1000" cy="400" r="300" fill="#7c3aed" opacity="0.08" filter="blur(80px)" />
+
+  <g transform="translate(100, 100)">
+    <!-- Logo Badge -->
+    <rect x="0" y="0" width="56" height="56" rx="14" fill="url(#og-text-grad)" />
+    <path d="M 20,20 L 12,28 L 20,36 M 36,20 L 44,28 L 36,36" stroke="#0a0a0f" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" />
+    
+    <text x="75" y="38" fill="#f5f5f5" font-family="Inter, sans-serif" font-size="28" font-weight="800">WEB CODE <tspan fill="#00d4ff" font-family="'Noto Sans Tamil', Inter, sans-serif">தமிழ்</tspan></text>
+
+    <text x="0" y="160" fill="#ffffff" font-family="Inter, sans-serif" font-size="64" font-weight="900" letter-spacing="-1">
+      Websites that make
+    </text>
+    <text x="0" y="235" fill="url(#og-text-grad)" font-family="Inter, sans-serif" font-size="64" font-weight="900">
+      businesses stand out.
+    </text>
+
+    <text x="0" y="310" fill="#888899" font-family="Inter, sans-serif" font-size="22" max-width="800">
+      We design and build modern websites, digital experiences and creative solutions for businesses and creators.
+    </text>
+
+    <!-- Services list pills -->
+    <g transform="translate(0, 370)" font-family="Inter, sans-serif" font-size="15" fill="#f5f5f5">
+      <rect x="0" y="0" width="200" height="42" rx="21" fill="#181828" stroke="#2a2a40" />
+      <text x="100" y="26" text-anchor="middle">Website Development</text>
+
+      <rect x="215" y="0" width="180" height="42" rx="21" fill="#181828" stroke="#2a2a40" />
+      <text x="305" y="26" text-anchor="middle">E-commerce Stores</text>
+
+      <rect x="410" y="0" width="140" height="42" rx="21" fill="#181828" stroke="#2a2a40" />
+      <text x="480" y="26" text-anchor="middle">UI/UX Design</text>
+
+      <rect x="565" y="0" width="210" height="42" rx="21" fill="#181828" stroke="#2a2a40" />
+      <text x="670" y="26" text-anchor="middle">YouTube Thumbnails</text>
+    </g>
+
+    <text x="0" y="470" fill="#00d4ff" font-family="Inter, sans-serif" font-size="18" font-weight="600">
+      webcodetamil.com · Small studio. Serious work.
+    </text>
+  </g>
+</svg>

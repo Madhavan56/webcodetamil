@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="100%" height="100%">
+  <defs>
+    <linearGradient id="blog1-bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0a0a14" />
+      <stop offset="100%" stop-color="#14142b" />
+    </linearGradient>
+    <linearGradient id="b-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00d4ff" />
+      <stop offset="100%" stop-color="#7c3aed" />
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="630" fill="url(#blog1-bg)" />
+  <circle cx="900" cy="300" r="240" fill="#00d4ff" opacity="0.12" filter="blur(60px)" />
+  <circle cx="1000" cy="350" r="180" fill="#7c3aed" opacity="0.15" filter="blur(50px)" />
+
+  <g transform="translate(100, 120)">
+    <rect width="130" height="32" rx="16" fill="#00d4ff" opacity="0.15" stroke="#00d4ff" stroke-width="1" />
+    <text x="65" y="21" fill="#00d4ff" font-family="Inter, sans-serif" font-size="12" font-weight="700" text-anchor="middle">CASE STUDY</text>
+
+    <text x="0" y="90" fill="#ffffff" font-family="Inter, sans-serif" font-size="48" font-weight="800" line-height="1.2">
+      Building Shoe Laze:
+    </text>
+    <text x="0" y="150" fill="url(#b-grad)" font-family="Inter, sans-serif" font-size="48" font-weight="800">
+      A Modern Storefront Experience
+    </text>
+
+    <text x="0" y="210" fill="#8888aa" font-family="Inter, sans-serif" font-size="18" max-width="500">
+      How we designed and engineered a fast, responsive e-commerce web platform with seamless Razorpay payment flows.
+    </text>
+
+    <g transform="translate(0, 270)" font-family="Inter, sans-serif" font-size="14" fill="#666688">
+      <text x="0" y="0">React · TypeScript · Tailwind · Razorpay</text>
+      <text x="0" y="30" fill="#00d4ff">Read Time: 6 min</text>
+    </g>
+  </g>
+
+  <!-- Graphic Preview Right -->
+  <g transform="translate(680, 140)">
+    <rect width="420" height="340" rx="20" fill="#121222" stroke="#2a2a44" stroke-width="2" />
+    <rect x="20" y="20" width="380" height="220" rx="12" fill="#1a1a30" />
+    <text x="210" y="135" fill="#00d4ff" font-family="Inter, sans-serif" font-size="32" font-weight="900" text-anchor="middle">SHOE<tspan fill="#ffffff">LAZE</tspan></text>
+    <rect x="140" y="265" width="140" height="38" rx="8" fill="#00d4ff" />
+    <text x="210" y="289" fill="#0a0a0f" font-family="Inter, sans-serif" font-size="13" font-weight="700" text-anchor="middle">Live Storefront</text>
+  </g>
+</svg>
