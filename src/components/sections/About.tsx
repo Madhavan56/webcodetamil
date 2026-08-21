@@ -41,7 +41,7 @@ export const About = () => {
               </h2>
             </ScrollReveal>
 
-            <ScrollReveal delay={100} direction="up" stagger={150}>
+            <ScrollReveal delay={100} direction="up">
               <div className="space-y-6 text-textMuted leading-relaxed">
                 <p className="body-lg">
                   WEB CODE தமிழ் is an independent web studio focused on creating modern websites, digital experiences and creative solutions for businesses and creators.
@@ -52,14 +52,15 @@ export const About = () => {
               </div>
             </ScrollReveal>
 
-            <ScrollReveal delay={300} direction="up" stagger={100}>
+            <ScrollReveal delay={300} direction="up">
               <ul className="grid sm:grid-cols-2 gap-4 mt-8">
                 {values.map((value, index) => (
                   <motion.li
                     key={value.title}
                     className="flex items-start gap-3 p-4 rounded-xl bg-surface/50 border border-border/50 hover:border-primary/30 transition-colors"
                     initial={{ opacity: 0, x: -20 }}
-                    animate={{ opacity: 1, x: 0 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true, margin: '0px 0px -40px 0px' }}
                     transition={{ delay: index * 80, duration: 0.5, ease: [0.34, 1.56, 0.64, 1] }}
                   >
                     <span className="flex-shrink-0 p-2 rounded-lg bg-primary/10 text-primary">

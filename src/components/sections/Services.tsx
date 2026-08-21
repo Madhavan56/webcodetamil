@@ -1,6 +1,6 @@
 import { services } from '@/data/services';
 import { Card, CardContent } from '@/components/ui/Card';
-import { ScrollReveal, StaggerContainer } from '@/components/ui/ScrollReveal';
+import { ScrollReveal } from '@/components/ui/ScrollReveal';
 
 export const Services = () => {
   return (
@@ -21,7 +21,7 @@ export const Services = () => {
           </div>
         </ScrollReveal>
 
-        <StaggerContainer staggerDelay={100} direction="vertical" className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {services.map((service, index) => (
             <ScrollReveal key={service.id} delay={index * 100} direction="up">
               <Card variant="glass" hover padding="lg" className="group h-full flex flex-col">
@@ -44,7 +44,7 @@ export const Services = () => {
               </Card>
             </ScrollReveal>
           ))}
-        </StaggerContainer>
+        </div>
       </div>
     </section>
   );

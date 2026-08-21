@@ -65,66 +65,44 @@ export const Contact = () => {
               </p>
 
               <div className="space-y-6" role="list">
-                <div className="flex items-start gap-4 p-5 rounded-2xl bg-surface/50 border border-border/50 hover:border-primary/30 transition-colors">
-                  <div className="flex-shrink-0 p-3 rounded-xl bg-primary/10 text-primary">
-                    <Mail className="h-6 w-6" aria-hidden="true" />
-                  </div>
-                  <div>
-                    <h3 className="text-body font-semibold text-text mb-1">Email Us</h3>
-                    <a href={`mailto:${siteConfig.contact.email}`} className="text-body-sm text-textMuted hover:text-text transition-colors">
-                      {siteConfig.contact.email}
-                    </a>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-4 p-5 rounded-2xl bg-surface/50 border border-border/50 hover:border-primary/30 transition-colors">
-                  <div className="flex-shrink-0 p-3 rounded-xl bg-primary/10 text-primary">
-                    <Phone className="h-6 w-6" aria-hidden="true" />
-                  </div>
-                  <div>
-                    <h3 className="text-body font-semibold text-text mb-1">Call Us</h3>
-                    <a href={`tel:${siteConfig.contact.phone}`} className="text-body-sm text-textMuted hover:text-text transition-colors">
-                      {siteConfig.contact.phone}
-                    </a>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-4 p-5 rounded-2xl bg-surface/50 border border-border/50 hover:border-primary/30 transition-colors">
-                  <div className="flex-shrink-0 p-3 rounded-xl bg-primary/10 text-primary">
-                    <MessageSquare className="h-6 w-6" aria-hidden="true" />
-                  </div>
-                  <div>
-                    <h3 className="text-body font-semibold text-text mb-1">WhatsApp</h3>
-                    <a href={siteConfig.contact.whatsapp} target="_blank" rel="noopener noreferrer" className="text-body-sm text-textMuted hover:text-text transition-colors">
-                      Chat on WhatsApp
-                    </a>
-                  </div>
-                </div>
+                {[{ Icon: Mail, label: 'Email Us', value: siteConfig.contact.email, href: `mailto:${siteConfig.contact.email}` }, { Icon: Phone, label: 'Call Us', value: siteConfig.contact.phone, href: `tel:${siteConfig.contact.phone}` }, { Icon: MessageSquare, label: 'WhatsApp', value: 'Chat on WhatsApp', href: siteConfig.contact.whatsapp, external: true }].map((item, i) => (
+                  <ScrollReveal key={item.label} delay={100 + i * 80} direction="left">
+                    <div className="flex items-start gap-4 p-5 rounded-2xl bg-surface/50 border border-border/50 hover:border-primary/30 transition-colors">
+                      <div className="flex-shrink-0 p-3 rounded-xl bg-primary/10 text-primary">
+                        <item.Icon className="h-6 w-6" aria-hidden="true" />
+                      </div>
+                      <div>
+                        <h3 className="text-body font-semibold text-text mb-1">{item.label}</h3>
+                        <a href={item.href} target={item.external ? '_blank' : undefined} rel={item.external ? 'noopener noreferrer' : undefined} className="text-body-sm text-textMuted hover:text-text transition-colors">
+                          {item.value}
+                        </a>
+                      </div>
+                    </div>
+                  </ScrollReveal>
+                ))}
               </div>
 
-              <ScrollReveal delay={200} direction="up">
-                <div className="mt-10 pt-8 border-t border-border/50">
-                  <h3 className="text-body font-semibold text-text mb-4">Quick Actions</h3>
-                  <div className="flex flex-col sm:flex-row gap-3">
-                    <a
-                      href={siteConfig.contact.whatsapp}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="btn-secondary flex-1 justify-center items-center gap-2"
-                    >
-                      <MessageSquare className="h-5 w-5" aria-hidden="true" />
-                      WhatsApp
-                    </a>
-                    <a
-                      href={`mailto:${siteConfig.contact.email}`}
-                      className="btn-secondary flex-1 justify-center items-center gap-2"
-                    >
-                      <Mail className="h-5 w-5" aria-hidden="true" />
-                      Email
-                    </a>
-                  </div>
+              <div className="mt-10 pt-8 border-t border-border/50">
+                <h3 className="text-body font-semibold text-text mb-4">Quick Actions</h3>
+                <div className="flex flex-col sm:flex-row gap-3">
+                  <a
+                    href={siteConfig.contact.whatsapp}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn-secondary flex-1 justify-center items-center gap-2"
+                  >
+                    <MessageSquare className="h-5 w-5" aria-hidden="true" />
+                    WhatsApp
+                  </a>
+                  <a
+                    href={`mailto:${siteConfig.contact.email}`}
+                    className="btn-secondary flex-1 justify-center items-center gap-2"
+                  >
+                    <Mail className="h-5 w-5" aria-hidden="true" />
+                    Email
+                  </a>
                 </div>
-              </ScrollReveal>
+              </div>
             </ScrollReveal>
           </div>
 

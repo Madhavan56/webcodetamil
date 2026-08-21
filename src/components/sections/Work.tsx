@@ -2,7 +2,7 @@ import { useState, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { projects, getThumbnailImages, getThumbnailCategories, type ProjectImage } from '@/data/projects';
 import { Lightbox } from '@/components/ui/Lightbox';
-import { ScrollReveal, StaggerContainer } from '@/components/ui/ScrollReveal';
+import { ScrollReveal } from '@/components/ui/ScrollReveal';
 import { Button } from '@/components/ui/Button';
 import { cn } from '@/utils/cn';
 import { ExternalLink, Image as ImageIcon, Grid, ArrowRight } from 'lucide-react';
@@ -197,11 +197,15 @@ export const Work = () => {
                     </div>
 
                     <div className="lg:col-span-8">
-                      <StaggerContainer staggerDelay={60} direction="vertical" className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         {filteredThumbnails.map((image) => (
                           <motion.div
                             key={image.src}
                             className="group relative aspect-[16/9] rounded-xl overflow-hidden bg-surface border border-border/80 cursor-pointer shadow-card"
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true, margin: '0px 0px -40px 0px' }}
+                            transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
                             whileHover={{ y: -3 }}
                             onClick={() => handleThumbnailClick(
                               filteredThumbnails.findIndex(img => img.src === image.src)
@@ -223,7 +227,7 @@ export const Work = () => {
                             </div>
                           </motion.div>
                         ))}
-                      </StaggerContainer>
+                      </div>
                     </div>
                   </div>
                 </article>

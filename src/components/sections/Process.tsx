@@ -1,6 +1,5 @@
-import { motion } from 'framer-motion';
 import { processSteps } from '@/data/process';
-import { ScrollReveal, StaggerContainer } from '@/components/ui/ScrollReveal';
+import { ScrollReveal } from '@/components/ui/ScrollReveal';
 import { cn } from '@/utils/cn';
 import { Search, Palette, Code, Rocket } from 'lucide-react';
 
@@ -33,10 +32,10 @@ export const Process = () => {
         <div className="relative">
           <div className="hidden lg:block absolute left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-primary/30 via-transparent to-primary/30 -translate-x-1/2" aria-hidden="true" />
 
-          <StaggerContainer staggerDelay={150} direction="vertical" className="space-y-12 lg:space-y-16 relative">
+          <div className="space-y-12 lg:space-y-16 relative">
             {processSteps.map((step, index) => (
               <ScrollReveal key={step.number} delay={index * 150} direction={index % 2 === 0 ? 'left' : 'right'}>
-                <motion.div
+                <div
                   className={cn(
                     'relative flex gap-8',
                     index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'
@@ -60,10 +59,10 @@ export const Process = () => {
                     <h3 className="heading-sm text-text mb-2">{step.title}</h3>
                     <p className="body text-textMuted">{step.description}</p>
                   </div>
-                </motion.div>
+                </div>
               </ScrollReveal>
             ))}
-          </StaggerContainer>
+          </div>
 
           <ScrollReveal delay={600} direction="up">
             <div className="text-center mt-16 lg:mt-24">

@@ -1,84 +1,72 @@
-import { useRef, useEffect, useState } from 'react';
+import { ReactNode } from 'react';
+import { motion, type Variants } from 'framer-motion';
+
+/* ──────────────────── Reveal wrapper ──────────────────── */
 
 interface ScrollRevealProps {
-  children: React.ReactNode;
+  children: ReactNode;
   delay?: number;
-  stagger?: number;
   direction?: 'up' | 'down' | 'left' | 'right';
   once?: boolean;
-  rootMargin?: string;
-  threshold?: number;
   className?: string;
   style?: React.CSSProperties;
 }
+
+const directionOffset = {
+  up:    { x: 0,   y: 40  },
+  down:  { x: 0,   y: -40 },
+  left:  { x: 40,  y: 0   },
+  right: { x: -40, y: 0   },
+};
 
 export const ScrollReveal = ({
   children,
   delay = 0,
   direction = 'up',
   once = true,
-  rootMargin = '0px 0px -50px 0px',
-  threshold = 0.1,
   className,
   style,
 }: ScrollRevealProps) => {
-  const ref = useRef<HTMLDivElement>(null);
-  const [isVisible, setIsVisible] = useState(false);
+  const offset = directionOffset[direction];
 
-  useEffect(() => {
-    const element = ref.current;
-    if (!element) return;
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-          if (once) {
-            observer.unobserve(element);
-          }
-        } else if (!once) {
-          setIsVisible(false);
-        }
+  const variants: Variants = {
+    hidden: {
+      opacity: 0,
+      x: offset.x,
+      y: offset.y,
+      scale: 0.97,
+    },
+    visible: {
+      opacity: 1,
+      x: 0,
+      y: 0,
+      scale: 1,
+      transition: {
+        duration: 0.7,
+        delay,
+        ease: [0.22, 1, 0.36, 1],
       },
-      { rootMargin, threshold }
-    );
-
-    observer.observe(element);
-    return () => observer.disconnect();
-  }, [rootMargin, threshold, once]);
-
-  const getTransform = () => {
-    if (!isVisible) {
-      switch (direction) {
-        case 'up': return 'translateY(30px)';
-        case 'down': return 'translateY(-30px)';
-        case 'left': return 'translateX(30px)';
-        case 'right': return 'translateX(-30px)';
-        default: return 'translateY(30px)';
-      }
-    }
-    return 'translate(0, 0)';
+    },
   };
 
   return (
-    <div
-      ref={ref}
+    <motion.div
       className={className}
-      style={{
-        ...style,
-        opacity: isVisible ? 1 : 0,
-        transform: getTransform(),
-        transition: `opacity 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) ${delay}ms, transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) ${delay}ms`,
-        willChange: 'opacity, transform',
-      }}
+      style={style}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once, margin: '0px 0px -60px 0px' }}
+      variants={variants}
     >
       {children}
-    </div>
+    </motion.div>
   );
 };
 
+/* ──────────────── Stagger container ───────────────────── */
+
 interface StaggerContainerProps {
-  children: React.ReactNode;
+  children: ReactNode;
   className?: string;
   direction?: 'vertical' | 'horizontal';
   staggerDelay?: number;
@@ -87,32 +75,72 @@ interface StaggerContainerProps {
 export const StaggerContainer = ({
   children,
   className,
-  staggerDelay = 100,
+  staggerDelay = 80,
 }: StaggerContainerProps) => {
-  const ref = useRef<HTMLDivElement>(null);
-  const [isVisible, setIsVisible] = useState(false);
-
-  useEffect(() => {
-    const element = ref.current;
-    if (!element) return;
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-          observer.unobserve(element);
-        }
-      },
-      { rootMargin: '0px 0px -50px 0px', threshold: 0.1 }
-    );
-
-    observer.observe(element);
-    return () => observer.disconnect();
-  }, []);
-
   return (
-    <div ref={ref} className={className}>
-      {isVisible ? children : null}
+    <div className={className}>
+      {Array.isArray(children)
+        ? children.map((child, i) => (
+            <ScrollReveal key={i} delay={i * staggerDelay} direction="up">
+              {child}
+            </ScrollReveal>
+          ))
+        : <ScrollReveal delay={0} direction="up">{children}</ScrollReveal>
+      }
     </div>
   );
 };
+
+/* ──────────────── Fade in on scroll ───────────────────── */
+
+interface FadeInProps {
+  children: ReactNode;
+  delay?: number;
+  duration?: number;
+  className?: string;
+}
+
+export const FadeIn = ({
+  children,
+  delay = 0,
+  duration = 0.6,
+  className,
+}: FadeInProps) => (
+  <motion.div
+    className={className}
+    initial={{ opacity: 0 }}
+    whileInView={{ opacity: 1 }}
+    viewport={{ once: true, margin: '0px 0px -40px 0px' }}
+    transition={{ duration, delay, ease: 'easeOut' }}
+  >
+    {children}
+  </motion.div>
+);
+
+/* ──────────────── Scale in on scroll ──────────────────── */
+
+interface ScaleInProps {
+  children: ReactNode;
+  delay?: number;
+  className?: string;
+}
+
+export const ScaleIn = ({
+  children,
+  delay = 0,
+  className,
+}: ScaleInProps) => (
+  <motion.div
+    className={className}
+    initial={{ opacity: 0, scale: 0.9 }}
+    whileInView={{ opacity: 1, scale: 1 }}
+    viewport={{ once: true, margin: '0px 0px -40px 0px' }}
+    transition={{
+      duration: 0.6,
+      delay,
+      ease: [0.22, 1, 0.36, 1],
+    }}
+  >
+    {children}
+  </motion.div>
+);

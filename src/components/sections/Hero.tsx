@@ -2,7 +2,6 @@ import { motion } from 'framer-motion';
 import { ArrowRight, MousePointerClick } from 'lucide-react';
 import { siteConfig } from '@/data/site';
 import { CodeBackground } from '@/components/background/CodeBackground';
-import { ScrollReveal } from '@/components/ui/ScrollReveal';
 
 export const Hero = () => {
   const handleScrollTo = (e: React.MouseEvent, id: string) => {
@@ -18,7 +17,6 @@ export const Hero = () => {
       <CodeBackground />
 
       <div className="container relative z-10 py-12 lg:py-20">
-        <ScrollReveal delay={0} stagger={120} direction="up">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -126,7 +124,6 @@ export const Hero = () => {
               </span>
             </motion.div>
           </motion.div>
-        </ScrollReveal>
 
         <motion.div
           className="absolute bottom-6 left-1/2 -translate-x-1/2 hidden md:block"
