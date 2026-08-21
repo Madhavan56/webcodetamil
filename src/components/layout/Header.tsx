@@ -34,15 +34,21 @@ export const Header = () => {
     close();
   }, [location.pathname, close]);
 
-  const handleNavClick = (href: string) => {
+  const handleNavClick = (e: React.MouseEvent, href: string) => {
+    e.preventDefault();
     close();
     if (href.startsWith('#')) {
       const elementId = href.replace('#', '');
       if (location.pathname === '/') {
-        const element = document.getElementById(elementId);
-        if (element) {
-          element.scrollIntoView({ behavior: 'smooth' });
-        }
+        // Wait for menu close animation + body overflow reset before scrolling
+        requestAnimationFrame(() => {
+          requestAnimationFrame(() => {
+            const element = document.getElementById(elementId);
+            if (element) {
+              element.scrollIntoView({ behavior: 'smooth' });
+            }
+          });
+        });
       }
     }
   };
@@ -88,7 +94,7 @@ export const Header = () => {
               <a
                 key={link.href}
                 href={getTargetUrl(link.href)}
-                onClick={() => handleNavClick(link.href)}
+                onClick={(e) => handleNavClick(e, link.href)}
                 className="relative text-body-sm font-medium text-textMuted hover:text-text transition-colors py-1 cursor-pointer"
               >
                 {link.label}
@@ -99,7 +105,7 @@ export const Header = () => {
           <div className="hidden lg:flex items-center gap-3">
             <a
               href={getTargetUrl('#contact')}
-              onClick={() => handleNavClick('#contact')}
+              onClick={(e) => handleNavClick(e, '#contact')}
               className="btn-secondary text-body-sm px-4 py-2"
             >
               Let's Work Together
@@ -133,7 +139,7 @@ export const Header = () => {
                     key={link.href}
                     href={getTargetUrl(link.href)}
                     className="block px-4 py-3 rounded-xl text-body font-medium text-textMuted hover:text-text hover:bg-surface/80 transition-colors"
-                    onClick={() => handleNavClick(link.href)}
+                    onClick={(e) => handleNavClick(e, link.href)}
                   >
                     {link.label}
                   </a>
@@ -141,7 +147,7 @@ export const Header = () => {
                 <div className="pt-4 border-t border-border/50 px-2">
                   <a
                     href={getTargetUrl('#contact')}
-                    onClick={() => handleNavClick('#contact')}
+                    onClick={(e) => handleNavClick(e, '#contact')}
                     className="btn-primary w-full py-3 justify-center"
                   >
                     Let's Work Together
