@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, Code } from 'lucide-react';
 import { cn } from '@/utils/cn';
@@ -12,6 +12,7 @@ export const Header = () => {
   const lastScrollY = useRef(0);
   const { isOpen, close, toggle } = useMobileMenu();
   const location = useLocation();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -40,7 +41,7 @@ export const Header = () => {
     if (href.startsWith('#')) {
       const elementId = href.replace('#', '');
       if (location.pathname === '/') {
-        // Wait for menu close animation + body overflow reset before scrolling
+        // Already on home page — smooth scroll to section
         requestAnimationFrame(() => {
           requestAnimationFrame(() => {
             const element = document.getElementById(elementId);
@@ -49,6 +50,9 @@ export const Header = () => {
             }
           });
         });
+      } else {
+        // On a different page (e.g. /blog) — navigate to home, then scroll
+        navigate('/' + href);
       }
     }
   };
