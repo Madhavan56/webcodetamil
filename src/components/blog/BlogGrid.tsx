@@ -1,6 +1,5 @@
 import { blogPosts, blogCategories, getPostsByCategory } from '@/data/blog';
 import { BlogCard } from './BlogCard';
-import { StaggerContainer } from '@/components/ui/ScrollReveal';
 import { cn } from '@/utils/cn';
 
 interface BlogGridProps {
@@ -22,22 +21,12 @@ export const BlogGrid = ({ featured = false, limit, category = 'all' }: BlogGrid
     );
   }
 
-  if (featured) {
-    return (
-      <StaggerContainer staggerDelay={150} direction="vertical" className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {posts.map((post) => (
-          <BlogCard key={post.slug} post={post} variant="default" />
-        ))}
-      </StaggerContainer>
-    );
-  }
-
   return (
-    <StaggerContainer staggerDelay={100} direction="vertical" className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
       {posts.map((post) => (
         <BlogCard key={post.slug} post={post} variant="default" />
       ))}
-    </StaggerContainer>
+    </div>
   );
 };
 

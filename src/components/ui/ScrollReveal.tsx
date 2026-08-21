@@ -1,7 +1,67 @@
-import { ReactNode } from 'react';
-import { motion, type Variants } from 'framer-motion';
+import { useRef, useEffect, useState, type ReactNode, type CSSProperties } from 'react';
 
-/* ──────────────────── Reveal wrapper ──────────────────── */
+/* ──────────────────── useScrollReveal hook ─────────────── */
+
+interface UseScrollRevealOptions {
+  delay?: number;
+  direction?: 'up' | 'down' | 'left' | 'right';
+  once?: boolean;
+  threshold?: number;
+}
+
+const directionStyles: Record<string, { x: number; y: number }> = {
+  up:    { x: 0,   y: 30 },
+  down:  { x: 0,   y: -30 },
+  left:  { x: 30,  y: 0 },
+  right: { x: -30, y: 0 },
+};
+
+export function useScrollReveal<T extends HTMLElement = HTMLDivElement>({
+  delay = 0,
+  direction = 'up',
+  once = true,
+  threshold = 0.15,
+}: UseScrollRevealOptions = {}) {
+  const ref = useRef<T>(null);
+  const [isInView, setIsInView] = useState(false);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsInView(true);
+          if (once) observer.unobserve(el);
+        } else if (!once) {
+          setIsInView(false);
+        }
+      },
+      { threshold, rootMargin: '0px 0px -50px 0px' }
+    );
+
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, [once, threshold]);
+
+  const offset = directionStyles[direction];
+
+  const revealStyle: CSSProperties = {
+    opacity: isInView ? 1 : 0,
+    transform: isInView
+      ? 'translate(0, 0) scale(1)'
+      : `translate(${offset.x}px, ${offset.y}px) scale(0.97)`,
+    transition: `opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1) ${delay}ms, transform 0.7s cubic-bezier(0.22, 1, 0.36, 1) ${delay}ms`,
+    willChange: 'opacity, transform',
+  };
+
+  return { ref, style: revealStyle, isInView };
+}
+
+/* ──────────────── ScrollReveal component ───────────────── */
+// A thin wrapper for simple cases. For grids/flex, use the hook directly
+// on your own element to avoid an extra wrapper div.
 
 interface ScrollRevealProps {
   children: ReactNode;
@@ -9,15 +69,8 @@ interface ScrollRevealProps {
   direction?: 'up' | 'down' | 'left' | 'right';
   once?: boolean;
   className?: string;
-  style?: React.CSSProperties;
+  style?: CSSProperties;
 }
-
-const directionOffset = {
-  up:    { x: 0,   y: 40  },
-  down:  { x: 0,   y: -40 },
-  left:  { x: 40,  y: 0   },
-  right: { x: -40, y: 0   },
-};
 
 export const ScrollReveal = ({
   children,
@@ -25,41 +78,18 @@ export const ScrollReveal = ({
   direction = 'up',
   once = true,
   className,
-  style,
+  style: styleProp,
 }: ScrollRevealProps) => {
-  const offset = directionOffset[direction];
-
-  const variants: Variants = {
-    hidden: {
-      opacity: 0,
-      x: offset.x,
-      y: offset.y,
-      scale: 0.97,
-    },
-    visible: {
-      opacity: 1,
-      x: 0,
-      y: 0,
-      scale: 1,
-      transition: {
-        duration: 0.7,
-        delay,
-        ease: [0.22, 1, 0.36, 1],
-      },
-    },
-  };
+  const { ref, style } = useScrollReveal({ delay, direction, once });
 
   return (
-    <motion.div
+    <div
+      ref={ref}
       className={className}
-      style={style}
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once, margin: '0px 0px -60px 0px' }}
-      variants={variants}
+      style={{ ...style, ...styleProp }}
     >
       {children}
-    </motion.div>
+    </div>
   );
 };
 
@@ -68,7 +98,6 @@ export const ScrollReveal = ({
 interface StaggerContainerProps {
   children: ReactNode;
   className?: string;
-  direction?: 'vertical' | 'horizontal';
   staggerDelay?: number;
 }
 
@@ -105,17 +134,14 @@ export const FadeIn = ({
   delay = 0,
   duration = 0.6,
   className,
-}: FadeInProps) => (
-  <motion.div
-    className={className}
-    initial={{ opacity: 0 }}
-    whileInView={{ opacity: 1 }}
-    viewport={{ once: true, margin: '0px 0px -40px 0px' }}
-    transition={{ duration, delay, ease: 'easeOut' }}
-  >
-    {children}
-  </motion.div>
-);
+}: FadeInProps) => {
+  const { ref, style } = useScrollReveal({ delay });
+  return (
+    <div ref={ref} className={className} style={{ ...style, transitionDuration: `${duration}s` }}>
+      {children}
+    </div>
+  );
+};
 
 /* ──────────────── Scale in on scroll ──────────────────── */
 
@@ -129,18 +155,11 @@ export const ScaleIn = ({
   children,
   delay = 0,
   className,
-}: ScaleInProps) => (
-  <motion.div
-    className={className}
-    initial={{ opacity: 0, scale: 0.9 }}
-    whileInView={{ opacity: 1, scale: 1 }}
-    viewport={{ once: true, margin: '0px 0px -40px 0px' }}
-    transition={{
-      duration: 0.6,
-      delay,
-      ease: [0.22, 1, 0.36, 1],
-    }}
-  >
-    {children}
-  </motion.div>
-);
+}: ScaleInProps) => {
+  const { ref, style } = useScrollReveal({ delay, direction: 'up' });
+  return (
+    <div ref={ref} className={className} style={style}>
+      {children}
+    </div>
+  );
+};
