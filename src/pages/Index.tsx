@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { Hero } from '@/components/sections/Hero';
 import { Services } from '@/components/sections/Services';
 import { Work } from '@/components/sections/Work';
@@ -37,10 +38,10 @@ export const Index = () => {
 
           <ScrollReveal delay={200} direction="up">
             <div className="text-center mt-12">
-              <a href="/blog" className="btn-secondary inline-flex items-center gap-2">
+              <Link to="/blog" className="btn-secondary inline-flex items-center gap-2">
                 View All Articles
                 <span className="hidden sm:inline">→</span>
-              </a>
+              </Link>
             </div>
           </ScrollReveal>
         </div>
