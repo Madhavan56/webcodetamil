@@ -28,7 +28,7 @@ export const Blog = () => {
 
           <BlogCategories activeCategory={activeCategory} onCategoryChange={setActiveCategory} />
 
-          <ScrollReveal delay={100} direction="up" stagger={100}>
+          <ScrollReveal delay={100} direction="up">
             <div id="blog-panel-all" role="tabpanel" aria-labelledby={activeCategory === 'all' ? 'blog-tab-all' : undefined} className={cn(activeCategory === 'all' ? '' : 'hidden')}>
               {posts.length > 0 ? (
                 <BlogGrid category={activeCategory} />

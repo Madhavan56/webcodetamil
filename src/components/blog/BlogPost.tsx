@@ -80,7 +80,7 @@ export const BlogPostContent = ({ slug }: BlogPostContentProps) => {
           </div>
         </ScrollReveal>
 
-        <ScrollReveal delay={200} direction="up" stagger={100}>
+        <ScrollReveal delay={200} direction="up">
           <div className="prose prose-invert max-w-none">
             <div className="body-lg text-textMuted mb-10 p-6 rounded-xl bg-surface/50 border border-border/50">
               {post.excerpt}

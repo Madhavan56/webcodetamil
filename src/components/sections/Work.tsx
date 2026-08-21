@@ -52,7 +52,6 @@ const ProjectArticle = ({
   setActiveCategory,
   filteredThumbnails,
   categories,
-  thumbnailImages,
 }: {
   project: typeof projects[number];
   projectIndex: number;
@@ -63,7 +62,6 @@ const ProjectArticle = ({
   setActiveCategory: (cat: string) => void;
   filteredThumbnails: ReturnType<typeof getThumbnailImages>;
   categories: string[];
-  thumbnailImages: ReturnType<typeof getThumbnailImages>;
 }) => {
   const { ref, style } = useScrollReveal({ delay: projectIndex * 150, direction: 'up' });
 
@@ -207,7 +205,7 @@ const ProjectArticle = ({
                 {filteredThumbnails.map((image) => (
                   <ThumbnailCard
                     key={image.src}
-                    image={image}
+                    image={{ src: image.src, alt: image.alt, category: image.category ?? '' }}
                     onClick={() => onThumbnailClick(
                       filteredThumbnails.findIndex(img => img.src === image.src)
                     )}
@@ -289,7 +287,6 @@ export const Work = () => {
               setActiveCategory={setActiveCategory}
               filteredThumbnails={filteredThumbnails}
               categories={categories}
-              thumbnailImages={thumbnailImages}
             />
           ))}
         </div>

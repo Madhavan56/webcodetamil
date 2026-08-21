@@ -25,7 +25,7 @@ const values = [
 ];
 
 const ValueItem = ({ value }: { value: typeof values[number] }) => {
-  const { ref, style } = useScrollReveal({ direction: 'left', delay: 0 });
+  const { ref, style } = useScrollReveal<HTMLLIElement>({ direction: 'left', delay: 0 });
 
   return (
     <li
