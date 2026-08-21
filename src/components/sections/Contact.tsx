@@ -7,7 +7,7 @@ import { useScrollReveal } from '@/components/ui/ScrollReveal';
 import { Button } from '@/components/ui/Button';
 import { Input, Textarea, Select } from '@/components/ui/Input';
 import { contactFormSchema, ContactFormData, projectTypeOptions } from '@/utils/validation';
-import { sendContactEmail } from '@/utils/emailjs';
+import { sendContactEmail } from '@/utils/email';
 import { siteConfig } from '@/data/site';
 import { useToast } from '@/hooks/useToast';
 

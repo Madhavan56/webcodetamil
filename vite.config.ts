@@ -23,7 +23,6 @@ export default defineConfig({
           animation: ['framer-motion'],
           icons: ['lucide-react'],
           forms: ['react-hook-form', '@hookform/resolvers', 'zod'],
-          email: ['@emailjs/browser'],
         },
       },
     },
