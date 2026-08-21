@@ -46,7 +46,9 @@ export const Navigation = () => {
   return (
     <nav className="hidden lg:fixed right-8 top-1/2 -translate-y-1/2 z-30" aria-label="Section navigation">
       <div className="bg-surface/80 backdrop-blur-xl border border-border/50 rounded-full p-2 space-y-1 shadow-card">
-        {navigationLinks.map((link, index) => {
+        {navigationLinks
+          .filter((link) => link.href.startsWith('#'))
+          .map((link, index) => {
           const sectionId = link.href.replace('#', '');
           const isActive = activeSection === sectionId;
 

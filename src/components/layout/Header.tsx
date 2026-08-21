@@ -51,9 +51,13 @@ export const Header = () => {
           });
         });
       } else {
-        // On a different page (e.g. /blog) — navigate to home, then scroll
+        // On a different page — navigate to home, then scroll
         navigate('/' + href);
       }
+    } else {
+      // Route link (e.g. /blog) — navigate via React Router
+      navigate(href);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     }
   };
 
