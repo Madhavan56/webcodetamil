@@ -11,15 +11,22 @@ export const Layout = () => {
   useEffect(() => {
     if (location.hash) {
       const elementId = location.hash.replace('#', '');
-      // Small delay to let the page render first
-      requestAnimationFrame(() => {
-        requestAnimationFrame(() => {
-          const element = document.getElementById(elementId);
-          if (element) {
-            element.scrollIntoView({ behavior: 'smooth' });
-          }
-        });
-      });
+      // Retry scrolling in case DOM hasn't rendered yet
+      let attempts = 0;
+      const tryScroll = () => {
+        const element = document.getElementById(elementId);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        } else if (attempts < 10) {
+          attempts++;
+          setTimeout(tryScroll, 100);
+        }
+      };
+      // Start after a short delay to let the page render
+      setTimeout(tryScroll, 50);
+    } else {
+      // No hash — scroll to top (e.g. navigating to /blog)
+      window.scrollTo({ top: 0 });
     }
   }, [location]);
 
