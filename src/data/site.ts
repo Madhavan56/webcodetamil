@@ -31,9 +31,9 @@ export const siteConfig: SiteConfig = {
     whatsapp: 'https://wa.me/919025614371',
   },
   social: {
-    twitter: 'https://twitter.com/webcodetamil',
-    linkedin: 'https://linkedin.com/company/webcodetamil',
-    github: 'https://github.com/webcodetamil',
+    twitter: 'https://twitter.com/Tylerdurden0070',
+    linkedin: 'https://wwww.linkedin.com/in/madhavan56',
+    github: 'https://github.com/Madhavan56',
     instagram: 'https://instagram.com/webcodetamil',
   },
   seo: {
@@ -50,6 +50,5 @@ export const navigationLinks = [
   { href: '#work', label: 'Work' },
   { href: '#about', label: 'About' },
   { href: '#process', label: 'Process' },
-  { href: '/blog', label: 'Blog' },
   { href: '#contact', label: 'Contact' },
 ] as const;

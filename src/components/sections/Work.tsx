@@ -67,8 +67,8 @@ const ProjectArticle = ({
 
   return (
     <div ref={ref} style={style}>
-      {project.id === 'shoe-laze' ? (
-        /* ─── Shoe Laze Featured Project ─── */
+      {project.id === 'sreedream-interiors' ? (
+        /* ─── SreeDream Interiors Featured Client Project ─── */
         <article
           className="grid lg:grid-cols-12 gap-10 lg:gap-12 items-center bg-surface/60 border border-border/60 rounded-3xl p-6 sm:p-8 lg:p-10 backdrop-blur-xl shadow-card"
         >
@@ -79,7 +79,7 @@ const ProjectArticle = ({
               </span>
               {project.featured && (
                 <span className="px-3 py-1 rounded-full bg-accent/10 border border-accent/30 text-accent text-body-sm font-semibold">
-                  Client Project
+                  First Client Project
                 </span>
               )}
             </div>
@@ -124,7 +124,7 @@ const ProjectArticle = ({
             >
               <img
                 src={getFirstImageSrc(project.images)}
-                alt={`${project.title} - Storefront preview`}
+                alt={`${project.title} - Interior design preview`}
                 className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                 loading="lazy"
               />

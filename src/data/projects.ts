@@ -17,17 +17,17 @@ export interface Project {
 
 export const projects: Project[] = [
   {
-    id: 'shoe-laze',
-    title: 'Shoe Laze',
-    description: "A modern business website designed to showcase products, collections and the brand's physical store online.",
-    technologies: ['React', 'TypeScript', 'Responsive Design', 'Razorpay'],
+    id: 'sreedream-interiors',
+    title: 'SreeDream Interiors',
+    description: 'A modern, responsive interior-design website showcasing residential and commercial interior projects, services, and designs through a clean, visually rich interface. Built to give clients a professional online presence and make it easy for potential customers to explore the company\'s work and get in touch.',
+    technologies: ['React', 'TypeScript', 'TanStack', 'Vite', 'Web3Forms'],
     images: [
-      { src: '/assets/projects/shoe-laze/hero.svg', alt: 'Shoe Laze - Official Storefront Hero & Drop Showcase' },
-      { src: '/assets/projects/shoe-laze/gallery.svg', alt: 'Shoe Laze - Footwear Catalog & Filter Experience' },
-      { src: '/assets/projects/shoe-laze/checkout.svg', alt: 'Shoe Laze - Razorpay Secure Checkout Integration' },
+      { src: '/assets/projects/sreedream-interiors/Screenshot (41).png', alt: 'SreeDream Interiors - Website Screenshot 1' },
+      { src: '/assets/projects/sreedream-interiors/Screenshot (42).png', alt: 'SreeDream Interiors - Website Screenshot 2' },
+      { src: '/assets/projects/sreedream-interiors/Screenshot (44).png', alt: 'SreeDream Interiors - Website Screenshot 3' },
     ],
     category: 'Website',
-    link: '#',
+    link: 'https://sastha-interiors.vercel.app/',
     featured: true,
   },
   {

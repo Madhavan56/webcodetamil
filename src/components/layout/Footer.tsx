@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom';
 import { Code, MessageSquare, Mail, Phone } from 'lucide-react';
 import { cn } from '@/utils/cn';
 import { siteConfig, navigationLinks } from '@/data/site';
@@ -11,12 +10,12 @@ export const Footer = () => {
       <div className="container py-16 lg:py-24">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8">
           <div className="lg:col-span-1">
-            <Link to="/" className="flex items-center gap-2 text-text font-bold text-heading-sm font-tamil mb-4" aria-label="WEB CODE தமிழ் - Home">
+            <a href="/#home" className="flex items-center gap-2 text-text font-bold text-heading-sm font-tamil mb-4" aria-label="WEB CODE தமிழ் - Home">
               <span className="relative p-1.5 rounded-lg bg-gradient-to-br from-primary to-accent">
                 <Code className="h-5 w-5 text-background" />
               </span>
               <span>WEB CODE <span className="font-tamil text-primary">தமிழ்</span></span>
-            </Link>
+            </a>
             <p className="text-body-sm text-textMuted mb-6 max-w-xs leading-relaxed">
               {siteConfig.description}
             </p>
@@ -67,17 +66,20 @@ export const Footer = () => {
                 <li key={link.href}>
                   <a
                     href={link.href}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      const id = link.href.replace('#', '');
+                      const element = document.getElementById(id);
+                      if (element) {
+                        element.scrollIntoView({ behavior: 'smooth' });
+                      }
+                    }}
                     className="text-body-sm text-textMuted hover:text-text transition-colors"
                   >
                     {link.label}
                   </a>
                 </li>
               ))}
-              <li>
-                <Link to="/blog" className="text-body-sm text-textMuted hover:text-text transition-colors">
-                  Blog &amp; Insights
-                </Link>
-              </li>
             </ul>
           </nav>
 
